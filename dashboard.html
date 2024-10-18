@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <button class="hamburger" id="hamburger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="container">
+    <nav class="sidebar" id="sidebar">
+      <h2>Weather App</h2>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="tables.html">Tables</a></li>
+      </ul>
+    </nav>
+
+    <div class="main-content" id="main-content">
+      <div class="weather-section">
+        <input type="text" id="city-input" placeholder="Enter city name" class="input-field">
+        <button id="getWeather" class="get-weather-btn">Get Weather</button>
+        <button id="useLocation" class="get-weather-btn">Use Current Location</button>
+      </div>
+
+      <div id="weather-widget" class="weather-widget">
+        <h2>Weather Data</h2>
+        <div id="unit-toggle">
+          <label for="unit-celsius">Celsius</label>
+          <input type="radio" id="unit-celsius" name="unit" value="C" checked>
+          <label for="unit-fahrenheit">Fahrenheit</label>
+          <input type="radio" id="unit-fahrenheit" name="unit" value="F">
+        </div>
+        <div id="weather-details" class="weather-details"></div>
+      </div>
+
+      <div class="chart-section">
+        <canvas id="barChart"></canvas>
+        <canvas id="doughnutChart"></canvas>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('sidebar').classList.toggle('active');
+      document.getElementById('main-content').classList.toggle('sidebar-active');
+    });
+
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      const hamburger = document.getElementById('hamburger-menu');
+      
+      if (!sidebar.contains(event.target) && !hamburger.contains(event.target) && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.getElementById('main-content').classList.remove('sidebar-active');
+      }
+    });
+  </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
