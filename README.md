@@ -46,4 +46,4 @@ This application integrates with the following APIs:
 2. Use the input field to search for weather data by city.
 3. Navigate to `tables.html` to view weather forecasts in a table format.
 
-
+## ignor this comment
